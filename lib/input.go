@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func ReadInput() (string, error) {
+func ReadInput() (*WordProcessor, error) {
 	scanner := bufio.NewScanner(os.Stdin)
 	var input string
 	for scanner.Scan() {
@@ -14,8 +14,8 @@ func ReadInput() (string, error) {
 
 	err := scanner.Err()
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
-	return input, nil
+	return MakeTextProcessor(input), nil
 }

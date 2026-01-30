@@ -1,14 +1,21 @@
 package main
 
 import (
+	"log"
+
+	tea "github.com/charmbracelet/bubbletea"
 	"github.com/justynhunter/speedreader/lib"
+	"github.com/justynhunter/speedreader/ui"
 )
 
 func main() {
-	input, err := lib.ReadInput()
+	wordProcessor, err := lib.ReadInput()
 	if err != nil {
-		panic("error reading input from stdin")
+		log.Fatal(err)
 	}
 
-	lib.ProcessInput(input, 100)
+	p := tea.NewProgram(ui.UiModel{DelayInMs: 300, WordProcessor: *wordProcessor}, tea.WithAltScreen())
+	if _, err := p.Run(); err != nil {
+		log.Fatal(err)
+	}
 }
