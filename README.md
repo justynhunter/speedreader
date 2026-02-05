@@ -9,6 +9,7 @@ cat your_doc | speedreader -d 400
 | flag | short | default | purpose |
 | --- | --- | --- | --- |
 | --delay | -d | 300 | delay between words in ms |
+| --no-highlight | -n | false | don't highlight the 'center' character |
 
 ### TODO
 - [x] center text on screen
