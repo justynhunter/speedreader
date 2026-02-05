@@ -19,3 +19,12 @@ func ReadInput() (*WordProcessor, error) {
 
 	return MakeTextProcessor(input), nil
 }
+
+func ReadFile(file string) (*WordProcessor, error) {
+	contentBytes, err := os.ReadFile(file)
+	if err != nil {
+		return nil, err
+	}
+
+	return MakeTextProcessor(string(contentBytes)), nil
+}

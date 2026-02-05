@@ -11,13 +11,16 @@ import (
 
 var delayInMs *int
 var noHighlight *bool
+var fileName *string
 
 var rootCmd = &cobra.Command{
-	Use:   "speedread",
+	Use:   "speedread [FILE]",
 	Short: "speadread is a cli tool for reading a document quickly.",
 	Long:  "speadread is a cli tool for reading a document quickly.",
 	Run: func(cmd *cobra.Command, args []string) {
-
+		if len(args) > 0 {
+			fileName = &args[0]
+		}
 	},
 }
 
@@ -30,9 +33,20 @@ func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		log.Fatal(err)
 	}
-	wordProcessor, err := lib.ReadInput()
-	if err != nil {
-		log.Fatal(err)
+
+	var wordProcessor *lib.WordProcessor
+	var err error
+
+	if fileName == nil {
+		wordProcessor, err = lib.ReadInput()
+		if err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		wordProcessor, err = lib.ReadFile(*fileName)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	log.Println(delayInMs)
