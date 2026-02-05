@@ -13,7 +13,7 @@ import (
 
 type UiModel struct {
 	DelayInMs     int
-	HideHighlight bool
+	NoHighlight   bool
 	WordProcessor lib.WordProcessor
 }
 
@@ -50,7 +50,7 @@ func (m UiModel) View() string {
 
 	var text string
 
-	if m.HideHighlight {
+	if m.NoHighlight {
 		text = m.WordProcessor.CurrentWord
 	} else {
 		text = lipgloss.StyleRunes(

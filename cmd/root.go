@@ -66,7 +66,7 @@ func Execute() {
 
 	log.Println(delayInMs)
 
-	p := tea.NewProgram(ui.UiModel{DelayInMs: *delayInMs, HideHighlight: *noHighlight, WordProcessor: *wordProcessor}, tea.WithAltScreen())
+	p := tea.NewProgram(ui.UiModel{DelayInMs: *delayInMs, NoHighlight: *noHighlight, WordProcessor: *wordProcessor}, tea.WithAltScreen())
 	if _, err := p.Run(); err != nil {
 		log.Fatal(err)
 	}
