@@ -1,9 +1,13 @@
 package ui
 
 import (
+	"log"
+	"os"
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
+	"github.com/charmbracelet/x/term"
 	"github.com/justynhunter/speedreader/lib"
 )
 
@@ -38,7 +42,14 @@ func (m UiModel) Update(message tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m UiModel) View() string {
-	return m.WordProcessor.CurrentWord
+	width, height, err := term.GetSize(os.Stdout.Fd())
+	if err != nil {
+		log.Fatal("unable to determin terminal size")
+	}
+
+	content := lipgloss.NewStyle().Render(m.WordProcessor.CurrentWord)
+
+	return lipgloss.Place(width, height, lipgloss.Center, lipgloss.Center, content)
 }
 
 func tick(delayInMs int) tea.Cmd {
