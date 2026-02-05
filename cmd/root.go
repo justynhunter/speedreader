@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"log"
+	"os"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/justynhunter/speedreader/lib"
@@ -37,13 +38,27 @@ func Execute() {
 	var wordProcessor *lib.WordProcessor
 	var err error
 
-	if fileName == nil {
-		wordProcessor, err = lib.ReadInput()
+	fileInfo, err := os.Stdin.Stat()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	isTerminal := (fileInfo.Mode() & os.ModeCharDevice) != 0
+
+	if isTerminal {
+		if fileName == nil {
+			if err = rootCmd.Help(); err != nil {
+				log.Fatal(err)
+			}
+			return
+		}
+
+		wordProcessor, err = lib.ReadFile(*fileName)
 		if err != nil {
 			log.Fatal(err)
 		}
 	} else {
-		wordProcessor, err = lib.ReadFile(*fileName)
+		wordProcessor, err = lib.ReadInput()
 		if err != nil {
 			log.Fatal(err)
 		}
