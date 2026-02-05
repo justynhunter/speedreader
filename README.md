@@ -3,13 +3,13 @@
 ### Usage
 
 ```bash
-cat your_doc | speedreader -d 400
+cat your_doc | sread -d 400
 ```
 
 or 
 
 ```bash
-speedreader my_file.txt --no-highlight
+sread my_file.txt --no-highlight
 ```
 
 | flag | short | default | purpose |
