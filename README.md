@@ -15,6 +15,7 @@ sread my_file.txt --no-highlight
 | flag | short | default | purpose |
 | --- | --- | --- | --- |
 | --delay | -d | 300 | delay between words in ms |
+| --highlight-color | -c | #FF0088 | color of the 'center' character |
 | --no-highlight | -n | false | don't highlight the 'center' character |
 
 ### TODO

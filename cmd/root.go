@@ -11,6 +11,7 @@ import (
 )
 
 var delayInMs *int
+var highlightColor *string
 var noHighlight *bool
 var fileName *string
 
@@ -27,6 +28,7 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	delayInMs = rootCmd.Flags().IntP("delay", "d", 300, "Delay between words in milliseconds")
+	highlightColor = rootCmd.Flags().StringP("highlight-color", "c", "#98FF98", "Color of the highlighted character in hex (e.g. #98FF98")
 	noHighlight = rootCmd.Flags().BoolP("no-highlight", "n", false, "Don't highlight the 'center' character in the word")
 }
 
@@ -66,7 +68,7 @@ func Execute() {
 
 	log.Println(delayInMs)
 
-	p := tea.NewProgram(ui.UiModel{DelayInMs: *delayInMs, NoHighlight: *noHighlight, WordProcessor: *wordProcessor}, tea.WithAltScreen())
+	p := tea.NewProgram(ui.UiModel{DelayInMs: *delayInMs, HighlightColor: *highlightColor, NoHighlight: *noHighlight, WordProcessor: *wordProcessor}, tea.WithAltScreen())
 	if _, err := p.Run(); err != nil {
 		log.Fatal(err)
 	}

@@ -12,9 +12,10 @@ import (
 )
 
 type UiModel struct {
-	DelayInMs     int
-	NoHighlight   bool
-	WordProcessor lib.WordProcessor
+	DelayInMs      int
+	HighlightColor string
+	NoHighlight    bool
+	WordProcessor  lib.WordProcessor
 }
 
 type tickMsg = time.Time
@@ -56,7 +57,7 @@ func (m UiModel) View() string {
 		text = lipgloss.StyleRunes(
 			m.WordProcessor.CurrentWord,
 			[]int{max(0, len(m.WordProcessor.CurrentWord)/2)},
-			lipgloss.NewStyle().Foreground(lipgloss.Color("#98FF98")),
+			lipgloss.NewStyle().Foreground(lipgloss.Color(m.HighlightColor)),
 			lipgloss.NewStyle(),
 		)
 	}
