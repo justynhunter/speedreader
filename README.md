@@ -3,7 +3,7 @@
 ### Usage
 
 ```bash
-cat your_doc | sread -d 400
+cat your_doc | sread -w 200
 ```
 
 or 
