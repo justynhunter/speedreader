@@ -24,4 +24,4 @@ sread my_file.txt --no-highlight
 - [x] add color highlight for focus
 - [x] support for file name, so you don't need to cat
 - [x] show help when nothing is piped in
-- [ ] add xdg config for default --delay
+- [x] add xdg config for default --delay
