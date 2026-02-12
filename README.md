@@ -2,6 +2,14 @@
 
 ## Installing
 
+If you have the go tooling installed simply do
+
+```bash
+go install github.com/justynhunter/sread
+```
+
+otherwise...
+
 1. Download from the current release to the right ->
 2. Unzip the file and move the binary to somewhere in your $PATH (e.g. `mv sread /usr/local/bin`)
 3. Use following the usage instructions below.
