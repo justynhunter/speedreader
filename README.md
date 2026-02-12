@@ -1,6 +1,12 @@
 # speedreader
 
-### Usage
+## Installing
+
+1. Download from the current release to the right ->
+2. Unzip the file and move the binary to somewhere in your $PATH (e.g. `mv sread /usr/local/bin`)
+3. Use following the usage instructions below.
+
+## Usage
 
 ```bash
 cat your_doc | sread -w 200
