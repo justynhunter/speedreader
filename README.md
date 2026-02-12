@@ -1,4 +1,6 @@
-# speedreader
+# sread
+
+A command line tool to speed read documents.
 
 ## Installing
 
@@ -10,7 +12,7 @@ go install github.com/justynhunter/sread
 
 otherwise...
 
-1. Download from the current release to the right ->
+1. Download from the current release to the right 👉
 2. Unzip the file and move the binary to somewhere in your $PATH (e.g. `mv sread /usr/local/bin`)
 3. Use following the usage instructions below.
 
