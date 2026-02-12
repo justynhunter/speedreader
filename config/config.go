@@ -61,7 +61,10 @@ func ReadConfig() (Config, error) {
 
 	bytes, err := os.ReadFile(configFilePath)
 	if err != nil {
-		return Config{}, err
+		config := defaultConfig()
+		if err = writeConfig(config); err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	return parseConfig(string(bytes)), nil
